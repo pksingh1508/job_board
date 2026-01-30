@@ -12,7 +12,19 @@ class JobPostController extends Controller
      */
     public function index()
     {
-        return view('jobs.index', ['jobs' => JobPost::all()]);
+        $jobs = JobPost::query();
+        $jobs->when(request('search'), function($query) {
+            $query->where(function ($query) {
+                $query->where('title', 'like', '%' . request('search') . '%')
+                ->orWhere('description', 'like', '%' . request('search') . '%');
+            });
+        })->when(request('min_salary'), function ($query) {
+            $query->where('salary', '>=', request('min_salary'));
+        })->when(request('max_salary'), function ($query) {
+            $query->where('salary', '<=', request('max_salary'));
+        });
+
+        return view('jobs.index', ['jobs' => $jobs->get()]);
     }
 
     /**
