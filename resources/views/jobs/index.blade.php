@@ -28,7 +28,11 @@
                     <x-radio-group name="category" :options="\App\Models\JobPost::$category" />
                 </div>
             </div>
-            <button class="btn">Filter</button>
+            <div class="flex space-x-5">
+                <button type="submit"
+                    class="rounded-md border-2 border-slate-300 bg-slate-100 px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-300 transition-all ease-in cursor-pointer">Filter</button>
+                <x-link-button :href="route('jobs.index')">Reset Form</x-link-button>
+            </div>
         </form>
     </x-card>
 
