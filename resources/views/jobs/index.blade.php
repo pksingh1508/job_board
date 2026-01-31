@@ -35,6 +35,7 @@
         </form>
     </x-card>
 
+    {{-- all the jobs Post --}}
     @foreach ($jobs as $job)
         <x-job-card class="mb-4" :$job>
             <div class="mt-5">
