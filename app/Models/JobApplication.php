@@ -11,7 +11,7 @@ class JobApplication extends Model
     /** @use HasFactory<\Database\Factories\JobApplicationFactory> */
     use HasFactory;
 
-    protected $fillable = ['expected_salary', 'user_id', 'job_posts_id'];
+    protected $fillable = ['expected_salary', 'user_id', 'job_posts_id', 'cv_path'];
 
     // defining the relationship
     public function job_post(): BelongsTo {
