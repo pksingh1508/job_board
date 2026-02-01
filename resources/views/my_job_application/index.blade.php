@@ -29,10 +29,17 @@
                 </div>
 
                 <div>
-
+                    <form action="{{ route('my-job-application.destroy', $application) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <x-button>Cancel</x-button>
+                    </form>
                 </div>
             </div>
         </x-job-card>
     @empty
+        <x-card>
+            You have not applied for any job yet.
+        </x-card>
     @endforelse
 </x-layout>
